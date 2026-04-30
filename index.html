@@ -36,11 +36,11 @@
         <span class="nav__name">Algemesí <strong>2027</strong></span>
       </div>
       <ul class="nav__links" id="navLinks">
-        <li><a href="#hemeroteca">Què han fet</a></li>
-        <li><a href="#pla">Què farem</a></li>
-        <li><a href="#pla-ce">Energia</a></li>
-        <li><a href="#pla-placa">Plaça Major</a></li>
-        <li><a href="#denuncia" class="nav__cta">Participa</a></li>
+        <li><a href="#hemeroteca" data-section="hemeroteca">Què han fet</a></li>
+        <li><a href="#pla" data-section="pla">Què farem</a></li>
+        <li><a href="#pla-ce" data-section="pla-ce">Energia</a></li>
+        <li><a href="#pla-placa" data-section="pla-placa">Plaça Major</a></li>
+        <li><a href="#denuncia" class="nav__cta" data-section="denuncia">Participa</a></li>
       </ul>
       <button class="nav__burger" id="navBurger" aria-label="Menú">
         <span></span><span></span><span></span>
@@ -129,7 +129,7 @@
         Què han fet amb <span class="underline-vox">els teus diners</span>?
       </h2>
       <p class="section-header__sub">
-        Set casos reals amb proves fotogràfiques i documents públics. Dotze fracassos del govern PP-Vox d'Algemesí.
+        Set casos reals amb proves fotogràfiques i documents públics. Tretze fracassos documentats del govern PP-Vox d'Algemesí.
         <strong>Llig cada cas i treu les teues pròpies conclusions.</strong>
       </p>
     </div>
@@ -164,12 +164,25 @@
       </div>
     </div>
 
+    <div class="hemeroteca-filters" id="hemerotecaFilters" role="group" aria-label="Filtra per responsable">
+      <button class="hfilt-btn hfilt-btn--active" data-filter="all">Tots els casos</button>
+      <button class="hfilt-btn hfilt-btn--pp" data-filter="pp">
+        <span class="hfilt-badge hfilt-badge--pp">PP</span> Govern PP
+      </button>
+      <button class="hfilt-btn hfilt-btn--vox" data-filter="vox">
+        <span class="hfilt-badge hfilt-badge--vox">VOX</span> Govern VOX
+      </button>
+      <button class="hfilt-btn hfilt-btn--ppvox" data-filter="pp-vox">
+        <span class="hfilt-badge hfilt-badge--pp">PP</span><span class="hfilt-badge hfilt-badge--vox">VOX</span> Pacte PP+VOX
+      </button>
+    </div>
+
     <div class="masonry-grid">
 
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 1 · AJUDA DANA ABANDONADA
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--wide clipping--featured clipping--pp-card" id="clip-dana">
+      <article class="clipping clipping--wide clipping--featured clipping--pp-card" id="clip-dana" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__category cat--pp">GESTIÓ DANA · ESCÀNDOL</span>
@@ -270,7 +283,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 2 · EL RAVAL, ABANDONAT DESPRÉS DE LA DANA
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--wide clipping--pp-card" id="clip-raval">
+      <article class="clipping clipping--wide clipping--pp-card" id="clip-raval" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__stamp-urgent" style="position:relative;top:auto;right:auto;">EMERGÈNCIA</span>
@@ -378,7 +391,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 3 · DINERS A EMPRESES DE FORA
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--highlight clipping--pp-card" id="clip-km0">
+      <article class="clipping clipping--highlight clipping--pp-card" id="clip-km0" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__stamp-urgent" style="position:relative;top:auto;right:auto;">EXCLUSIVA</span>
@@ -412,7 +425,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 4 · SUBVENCIONS PERDUDES
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--pp-card" id="clip-subvencions">
+      <article class="clipping clipping--pp-card" id="clip-subvencions" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__category cat--pp">POLÍGONS INDUSTRIALS</span>
@@ -448,7 +461,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 5 · ABANDÓ URBÀ (fusió: carrers, Plaça Ribera, semàfor, neteja, premsa)
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--wide clipping--featured clipping--pp-card" id="clip-abandono">
+      <article class="clipping clipping--wide clipping--featured clipping--pp-card" id="clip-abandono" data-party="pp-vox">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="party-badge party-badge--vox">VOX</span>
@@ -534,7 +547,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 6 · RETALLADA DE LES MUIXERANGUES
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--wide clipping--culture clipping--vox-card" id="clip-muixerangues">
+      <article class="clipping clipping--wide clipping--culture clipping--vox-card" id="clip-muixerangues" data-party="vox">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--vox">VOX</span>
           <span class="party-badge party-badge--pp" style="opacity:0.7">PP</span>
@@ -568,7 +581,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 7 · EL PACTE PP-VOX — EL PREU DE L'EXTREMISME
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--wide clipping--vox-card" id="clip-pacte">
+      <article class="clipping clipping--wide clipping--vox-card" id="clip-pacte" data-party="pp-vox">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="party-badge party-badge--vox">VOX</span>
@@ -607,7 +620,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 8 · CORTOPLACISME I PARÀLISI D'INVERSIONS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--pp-card" id="clip-cortoplacisme">
+      <article class="clipping clipping--pp-card" id="clip-cortoplacisme" data-party="pp-vox">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="party-badge party-badge--vox">VOX</span>
@@ -643,7 +656,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 9 · POLÍGONS INDUSTRIALS ABANDONATS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--pp-card" id="clip-poligons">
+      <article class="clipping clipping--pp-card" id="clip-poligons" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__category cat--pp">ECONOMIA LOCAL · POLÍGONS</span>
@@ -682,7 +695,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 10 · RETALLADES EN SERVEIS SOCIALS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--wide clipping--vox-card" id="clip-socials">
+      <article class="clipping clipping--wide clipping--vox-card" id="clip-socials" data-party="vox">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--vox">VOX</span>
           <span class="party-badge party-badge--pp" style="opacity:0.7">PP</span>
@@ -719,7 +732,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 11 · 9 MESOS DE RETARD EN LA RECONSTRUCCIÓ POST-DANA
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--pp-card" id="clip-retard-dana">
+      <article class="clipping clipping--pp-card" id="clip-retard-dana" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__category cat--pp">DANA · BUROCRÀCIA POST-CATÀSTROFE</span>
@@ -755,7 +768,7 @@
       <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            CAS 12 · DONACIONS DE LA DANA ACUMULADES SENSE REPARTIR
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-      <article class="clipping clipping--pp-card" id="clip-donacions-acumulades">
+      <article class="clipping clipping--pp-card" id="clip-donacions-acumulades" data-party="pp">
         <div class="clipping__party-row">
           <span class="party-badge party-badge--pp">PP</span>
           <span class="clipping__category cat--pp">DANA · GESTIÓ DE DONACIONS</span>
@@ -784,6 +797,53 @@
         <div class="clipping__note clipping__note--pp">L'esforç solidari dels ciutadans mereix una gestió eficient, no un magatzem abandonat.</div>
         <div class="clipping__source-url">
           Font: <a href="https://www.elperiodic.com/algemesi/pspv-algemesi-denuncia-acumulacion-material-donado-tras-dana-poligono-cotes_1044657" target="_blank" rel="noopener">elperiodic.com — 10/11/2025</a>
+        </div>
+      </article>
+
+
+      <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           CAS 13 · DELINQÜENCIA +15,2% — FRACAS EN SEGURETAT
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <article class="clipping clipping--wide clipping--pp-card" id="clip-delincuencia" data-party="pp">
+        <div class="clipping__party-row">
+          <span class="party-badge party-badge--pp">PP</span>
+          <span class="clipping__stamp-urgent" style="position:relative;top:auto;right:auto;">ALERTA</span>
+          <span class="clipping__category cat--pp">SEGURETAT · DELINQÜENCIA</span>
+        </div>
+        <div class="clipping__header">
+          <span class="clipping__source">elperiodic.com · PSPV Algemesí</span>
+          <span class="clipping__date">02/04/2026</span>
+        </div>
+        <h3 class="clipping__headline">
+          “La delinqüencia puja un <span class="highlight-blue-strong">15,2%</span> a Algemesí
+          mentre Espanya la redueix: armilles antibalas caducades i edificis municipals en runes”
+        </h3>
+        <p class="clipping__body">
+          Mentre el conjunt d’Espanya registra una reducció de la criminalitat del <strong>0,2%</strong>,
+          Algemesí s’erigeix com una excepció alarmant amb un increment del
+          <strong>15,2% en un sol any</strong>. Municipis veïns com Cullera redueixen la
+          delinqüencia un <strong>10,7%</strong>, Xirivella un <strong>6,1%</strong>
+          i Xàtiva un <strong>2,3%</strong> — Algemesí evoluciona en sentit contrari.<br><br>
+          El PSPV denuncia <strong>desajustos en l’estructura policial</strong>: el nomenament
+          de l’Inspector-Cap es va demorar prop d’un mes; part de la plantilla hauria estat
+          patrullant amb <strong>armilles antibalas amb la vida útil superada des de finals
+          de 2025</strong>. Al barri del Raval, edificis municipals en ruïna han generat
+          <strong>episodis d’incendis i ocupacions</strong> per manca d’actuació
+          del govern local — convertint-los en <em>focus de risc persistents</em>
+          amb impacte directe en la seguretat i la convivència.
+        </p>
+        <div class="clipping__callout">
+          <div class="callout-num callout-num--pp">+15,2%</div>
+          <div class="callout-label">
+            increment de la delinqüencia en un any.<br />
+            <em>Cullera −10,7% · Xirivella −6,1% · Xàtiva −2,3%</em>
+          </div>
+        </div>
+        <div class="clipping__note clipping__note--pp">
+          Armilles antibalas caducades. Edificis en runes. El PP ha fallat en seguretat.
+        </div>
+        <div class="clipping__source-url">
+          Font: <a href="https://www.elperiodic.com/algemesi/pspv-alerta-incremento-delincuencia-algemesi_1067373" target="_blank" rel="noopener">elperiodic.com — 02/04/2026</a>
         </div>
       </article>
 
@@ -816,6 +876,7 @@
       <div class="pilar pilar--pp" id="pilar-km0">
         <div class="pilar__header-bar">
           <span class="pilar__num">1</span>
+          <span class="pilar__icon" aria-hidden="true">🏗️</span>
           <span class="pilar__header-title">Contractació Quilòmetre Zero</span>
         </div>
         <div class="pilar__content">
@@ -834,13 +895,18 @@
             <li>Registre públic d'adjudicacions amb origen de les empreses</li>
             <li>Objectiu mínim del 60% d'inversió al territori</li>
           </ul>
+          <div class="pilar__compare">
+            <div class="pilar__compare-bad"><span>✗</span> ~1M€ a empreses <strong>de fora</strong> d'Algemesí</div>
+            <div class="pilar__compare-good"><span>✓</span> 60% mínim d'inversió <strong>local garantida</strong></div>
+          </div>
+          <div class="pilar__impact">+400 empreses i autònoms locals beneficiats</div>
         </div>
       </div>
 
       <!-- PILAR 2 -->
-      <div class="pilar pilar--pp" id="pilar-transparencia">
         <div class="pilar__header-bar">
           <span class="pilar__num">2</span>
+          <span class="pilar__icon" aria-hidden="true">🔍</span>
           <span class="pilar__header-title">Transparència Total</span>
         </div>
         <div class="pilar__content">
@@ -859,13 +925,18 @@
             <li>Retransmissió i actes en termini legal</li>
             <li>Bústia digital amb resposta en 72 hores</li>
           </ul>
+          <div class="pilar__compare">
+            <div class="pilar__compare-bad"><span>✗</span> DANA abandonada. Cap <strong>explicació</strong> al Ple</div>
+            <div class="pilar__compare-good"><span>✓</span> Resposta garantida en <strong>72 hores</strong></div>
+          </div>
+          <div class="pilar__impact">28.000 veïns d'Algemesí amb accés real a la informació</div>
         </div>
       </div>
 
       <!-- PILAR 3 -->
-      <div class="pilar pilar--pp" id="pilar-industrial">
         <div class="pilar__header-bar">
           <span class="pilar__num">3</span>
+          <span class="pilar__icon" aria-hidden="true">🏭</span>
           <span class="pilar__header-title">Rescat Industrial i Econòmic</span>
         </div>
         <div class="pilar__content">
@@ -884,13 +955,18 @@
             <li>Tècnic especialista en captació de subvencions</li>
             <li>Modernització dels polígons en 18 mesos</li>
           </ul>
+          <div class="pilar__compare">
+            <div class="pilar__compare-bad"><span>✗</span> 600.000€ en subvencions <strong>perdudes</strong> per imprevisió</div>
+            <div class="pilar__compare-good"><span>✓</span> Fons de garantia de <strong>300K€/any</strong> blindat</div>
+          </div>
+          <div class="pilar__impact">+500 empreses als polígons industrials modernitzats</div>
         </div>
       </div>
 
       <!-- PILAR 4 -->
-      <div class="pilar pilar--culture" id="pilar-cultura">
         <div class="pilar__header-bar">
           <span class="pilar__num">4</span>
+          <span class="pilar__icon" aria-hidden="true">🎭</span>
           <span class="pilar__header-title">Cultura i Identitat Intocables</span>
         </div>
         <div class="pilar__content">
@@ -909,6 +985,11 @@
             <li>Escola de Cultura Popular finançada al 100%</li>
             <li>Difusió internacional del Patrimoni UNESCO</li>
           </ul>
+          <div class="pilar__compare">
+            <div class="pilar__compare-bad"><span>✗</span> −50% pressupost de les <strong>Muixerangues</strong> retallat per VOX</div>
+            <div class="pilar__compare-good"><span>✓</span> Pressupost <strong>blindat per ordenança</strong> irretallable</div>
+          </div>
+          <div class="pilar__impact">1.800 muixeranguers, famílies i cultura viva protegides</div>
         </div>
       </div>
 
@@ -998,8 +1079,28 @@
 
     </div>
 
+    <!-- Calculadora d'estalvi energètic -->
+    <div class="ce-calculator" id="ceCalculator">
+      <div class="ce-calculator__label">CALCULADORA D'ESTALVI</div>
+      <h3 class="ce-calculator__title">Quant estalviarien amb la Comunitat Energètica?</h3>
+      <div class="ce-calculator__body">
+        <label class="ce-calculator__range-label">
+          Membres a la llar: <strong id="ceMembers">3</strong>
+        </label>
+        <input type="range" id="ceSlider" class="ce-calculator__slider"
+          min="1" max="6" value="3" aria-label="Membres de la llar" />
+        <div class="ce-calculator__scale">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        </div>
+        <div class="ce-calculator__result">
+          Estalvi estimat anual:
+          <span class="ce-calculator__num" id="ceSaving">540€</span>
+        </div>
+        <p class="ce-calculator__note">Estimació basada en 180€/membre/any. Sense cap inversió per part del cidadà.</p>
+      </div>
+    </div>
+
     <div class="projecte-estrella__footer">
-      Un pla de govern per a la gent real. Treball i constància.
       <strong>Suma't al canvi amb el PSPV-PSOE.</strong>
     </div>
   </section>
@@ -1064,8 +1165,26 @@
 
     </div>
 
+    <!-- Avantatges Plaça Major -->
+    <div class="placa-benefits">
+      <div class="placa-benefit">
+        <span class="placa-benefit__icon">📅</span>
+        <strong>Construcció en 18 mesos</strong>
+        <span>Calendari públic i verificable</span>
+      </div>
+      <div class="placa-benefit">
+        <span class="placa-benefit__icon">💰</span>
+        <strong>Financement autonòmic disponible</strong>
+        <span>Subvencions del Pla de Rehabilitació GVA</span>
+      </div>
+      <div class="placa-benefit">
+        <span class="placa-benefit__icon">🤝</span>
+        <strong>Respecte 100% a la tradició</strong>
+        <span>El Cadafal intacte, com sempre ha sigut</span>
+      </div>
+    </div>
+
     <div class="projecte-estrella__footer">
-      La Plaça Total: màxima festa, màxim dia a dia.
       <strong>Sense renúncies. Suma't!</strong>
     </div>
   </section>
@@ -1154,6 +1273,12 @@
           </div>
 
           <div class="form-group">
+            <label for="email" class="form-label">Correu electrònic (opcional)</label>
+            <input type="email" id="email" name="email" class="form-input"
+              placeholder="perquè et puguem donar resposta" autocomplete="email" />
+          </div>
+
+          <div class="form-group">
             <label for="tipus" class="form-label">Tipus de cas <span class="form-required">*</span></label>
             <select id="tipus" name="tipus" class="form-input form-select" required>
               <option value="">— Selecciona el tipus de cas —</option>
@@ -1179,8 +1304,9 @@
             <label for="descripcio" class="form-label">Descriu el cas <span class="form-required">*</span></label>
             <textarea id="descripcio" name="descripcio" class="form-input form-textarea" rows="4"
               placeholder="Explica'ns el que ha passat amb el màxim de detall possible: dates, import, empreses implicades, testimonis..."
-              required></textarea>
+              required maxlength="1200"></textarea>
             <span class="form-error" id="descripcio-error">Per favor, descriu el cas.</span>
+            <div class="form-char-counter"><span id="descCounter">0</span> / 1200 caràcters</div>
           </div>
 
           <div class="form-group">

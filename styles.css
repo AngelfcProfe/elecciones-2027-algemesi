@@ -2198,6 +2198,336 @@ ul { list-style: none; }
   border-image: linear-gradient(90deg, var(--c-pp) 0%, var(--c-pp) 50%, var(--c-vox) 50%, var(--c-vox) 100%) 1;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   READ PROGRESS BAR
+   ═══════════════════════════════════════════════════════════ */
+#readProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--c-red);
+  z-index: 201;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAV ACTIVE SECTION LINK
+   ═══════════════════════════════════════════════════════════ */
+.nav__links a.active {
+  color: #fff;
+  position: relative;
+}
+.nav__links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: var(--c-red);
+  border-radius: 1px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEMEROTECA FILTER BUTTONS
+   ═══════════════════════════════════════════════════════════ */
+.hemeroteca-filters {
+  max-width: var(--max-w);
+  margin: 0 auto var(--space-sm);
+  padding: 0 var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hfilt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--ff-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--c-line);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--c-ink-light);
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+.hfilt-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.hfilt-btn--active {
+  background: var(--c-ink);
+  color: #fff;
+  border-color: var(--c-ink);
+}
+.hfilt-btn--pp.hfilt-btn--active  { background: var(--c-pp); border-color: var(--c-pp); color: #fff; }
+.hfilt-btn--vox.hfilt-btn--active { background: var(--c-vox-dark); border-color: var(--c-vox-dark); color: #fff; }
+.hfilt-btn--ppvox.hfilt-btn--active {
+  background: linear-gradient(90deg, var(--c-pp) 0%, var(--c-vox-dark) 100%);
+  border-color: var(--c-pp);
+  color: #fff;
+}
+
+.hfilt-badge {
+  display: inline-flex;
+  font-family: var(--ff-typewriter);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 1px;
+}
+.hfilt-badge--pp  { background: var(--c-pp); }
+.hfilt-badge--vox { background: var(--c-vox); }
+
+/* Hidden filter state */
+.clipping--hidden,
+.dana-carousel--hidden {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .hemeroteca-filters { padding: 0 var(--space-sm); gap: 0.4rem; }
+  .hfilt-btn { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PILAR ENHANCEMENTS — ICON · COMPARE · IMPACT
+   ═══════════════════════════════════════════════════════════ */
+.pilar__icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.pilar__compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: var(--space-sm);
+  margin-bottom: 0.6rem;
+}
+.pilar__compare-bad,
+.pilar__compare-good {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 3px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.pilar__compare-bad span,
+.pilar__compare-good span {
+  font-weight: 900;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.pilar__compare-bad {
+  background: rgba(204,31,38,0.07);
+  border-left: 3px solid rgba(204,31,38,0.45);
+  color: #7a1a1e;
+}
+.pilar__compare-bad span { color: var(--c-red); }
+.pilar__compare-good {
+  background: rgba(37,140,60,0.08);
+  border-left: 3px solid rgba(37,140,60,0.45);
+  color: #1a5c29;
+}
+.pilar__compare-good span { color: #1e7a32; }
+
+.pilar__impact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(37,140,60,0.1);
+  border: 1px solid rgba(37,140,60,0.25);
+  color: #1a5c29;
+  font-family: var(--ff-typewriter);
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  font-weight: 700;
+}
+.pilar__impact::before {
+  content: '↑';
+  font-weight: 900;
+  color: #1e7a32;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENERGY CALCULATOR
+   ═══════════════════════════════════════════════════════════ */
+.ce-calculator {
+  max-width: 640px;
+  margin: var(--space-md) auto var(--space-sm);
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 2rem 2.5rem;
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.ce-calculator__label {
+  font-family: var(--ff-typewriter);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: inline-block;
+  padding: 3px 12px;
+  margin-bottom: 0.75rem;
+}
+.ce-calculator__title {
+  font-family: var(--ff-headline);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+.ce-calculator__range-label {
+  display: block;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 0.6rem;
+}
+.ce-calculator__range-label strong { color: #fff; font-size: 1.3rem; }
+.ce-calculator__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+.ce-calculator__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--c-red);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(204,31,38,0.5);
+}
+.ce-calculator__slider::-moz-range-thumb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--c-red);
+  cursor: pointer;
+  border: none;
+}
+.ce-calculator__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.35rem;
+  font-family: var(--ff-typewriter);
+}
+.ce-calculator__result {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.82);
+}
+.ce-calculator__num {
+  display: block;
+  font-family: var(--ff-headline);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffd700;
+  line-height: 1.05;
+  text-shadow: 0 0 30px rgba(255,215,0,0.4);
+}
+.ce-calculator__note {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .ce-calculator { padding: 1.2rem; margin: var(--space-sm) var(--space-xs); }
+  .ce-calculator__title { font-size: 1.1rem; }
+  .ce-calculator__num { font-size: 2.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PLAÇA MAJOR BENEFIT CHIPS
+   ═══════════════════════════════════════════════════════════ */
+.placa-benefits {
+  max-width: var(--max-w);
+  margin: var(--space-md) auto 0;
+  padding: 0 var(--space-md);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.placa-benefit {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.placa-benefit:hover { background: rgba(255,255,255,0.16); transform: translateY(-3px); }
+.placa-benefit__icon { font-size: 1.6rem; line-height: 1; }
+.placa-benefit strong { color: #fff; font-size: 0.98rem; line-height: 1.3; }
+.placa-benefit span { color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.45; }
+
+@media (max-width: 640px) {
+  .placa-benefits { grid-template-columns: 1fr; padding: 0 var(--space-xs); }
+  .placa-benefit { flex-direction: row; text-align: left; gap: 0.75rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FORM CHAR COUNTER
+   ═══════════════════════════════════════════════════════════ */
+.form-char-counter {
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  text-align: right;
+  margin-top: 0.2rem;
+  font-family: var(--ff-typewriter);
+  letter-spacing: 0.3px;
+}
+.form-char-counter.near-limit { color: #b35c00; }
+.form-char-counter.at-limit   { color: var(--c-red); font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE IMPROVEMENTS
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  html { font-size: 16px; }
+  .clipping { padding: 1.2rem 1rem 1rem; }
+  .hero__h1 { font-size: clamp(2.2rem, 7vw, 4.5rem); }
+  .nav__links.open { gap: 0.25rem; }
+  .nav__links.open a { padding: 10px 14px; font-size: 0.88rem; }
+}
+
 /* ── Responsive coalition banner ───────────────────────────── */
 @media (max-width: 768px) {
   .coalition-banner { padding: 1.5rem 1rem; gap: 1rem; }

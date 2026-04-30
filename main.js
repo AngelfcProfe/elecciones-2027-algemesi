@@ -245,5 +245,145 @@ function initCarousel(trackId, dotsId, prevId, nextId) {
   if (carouselEl) carouselObserver.observe(carouselEl);
 }
 
+}
+
 initCarousel('danaCarouselTrack', 'danaCarouselDots', 'danaCarouselPrev', 'danaCarouselNext');
 initCarousel('ravalCarouselTrack', 'ravalCarouselDots', 'ravalCarouselPrev', 'ravalCarouselNext');
+
+/* ═══════════════════════════════════════════════════════════
+   READ PROGRESS BAR
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  const bar = document.getElementById('readProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', function () {
+    const docH  = document.documentElement.scrollHeight - window.innerHeight;
+    const pct   = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    bar.style.width = pct.toFixed(1) + '%';
+  }, { passive: true });
+}());
+
+/* ═══════════════════════════════════════════════════════════
+   ACTIVE NAV SECTION (IntersectionObserver)
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  const navLinkEls = document.querySelectorAll('.nav__links a[data-section]');
+  if (!navLinkEls.length) return;
+
+  const sectionIds = Array.from(navLinkEls).map(function (a) { return a.dataset.section; });
+  const sections   = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+
+  if (!sections.length) return;
+
+  let activeSectionId = '';
+
+  const obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { activeSectionId = entry.target.id; }
+    });
+    navLinkEls.forEach(function (a) {
+      a.classList.toggle('active', a.dataset.section === activeSectionId);
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(function (s) { obs.observe(s); });
+}());
+
+/* Close mobile menu when clicking outside */
+document.addEventListener('click', function (e) {
+  const navBurger = document.getElementById('navBurger');
+  const navLinksEl = document.getElementById('navLinks');
+  if (!navLinksEl || !navBurger) return;
+  if (navLinksEl.classList.contains('open') &&
+      !navLinksEl.contains(e.target) &&
+      !navBurger.contains(e.target)) {
+    navLinksEl.classList.remove('open');
+    navBurger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   HEMEROTECA FILTER
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var filtersEl = document.getElementById('hemerotecaFilters');
+  if (!filtersEl) return;
+
+  filtersEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.hfilt-btn');
+    if (!btn) return;
+
+    /* update button active state */
+    filtersEl.querySelectorAll('.hfilt-btn').forEach(function (b) {
+      b.classList.remove('hfilt-btn--active');
+    });
+    btn.classList.add('hfilt-btn--active');
+
+    var filter = btn.dataset.filter;
+
+    /* show/hide articles */
+    var articles = document.querySelectorAll('.masonry-grid .clipping[data-party]');
+    articles.forEach(function (art) {
+      var party = art.dataset.party || '';
+      var match = filter === 'all' || party === filter ||
+                  (filter === 'pp'     && party.includes('pp'))   ||
+                  (filter === 'vox'    && party.includes('vox'))  ||
+                  (filter === 'pp-vox' && party === 'pp-vox');
+      art.classList.toggle('clipping--hidden', !match);
+    });
+
+    /* hide carousels whose preceding article is hidden */
+    var carousels = document.querySelectorAll('.masonry-grid .dana-carousel');
+    carousels.forEach(function (carousel) {
+      var prev = carousel.previousElementSibling;
+      while (prev && !prev.matches('.clipping[data-party]')) {
+        prev = prev.previousElementSibling;
+      }
+      var hide = prev && prev.classList.contains('clipping--hidden');
+      carousel.classList.toggle('dana-carousel--hidden', !!hide);
+    });
+  });
+}());
+
+/* ═══════════════════════════════════════════════════════════
+   TEXTAREA CHAR COUNTER
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var ta      = document.getElementById('descripcio');
+  var counter = document.getElementById('descCounter');
+  var wrapper = counter && counter.closest('.form-char-counter');
+  if (!ta || !counter) return;
+
+  var MAX = 1200;
+
+  ta.addEventListener('input', function () {
+    var len = ta.value.length;
+    if (len > MAX) { ta.value = ta.value.slice(0, MAX); len = MAX; }
+    counter.textContent = len;
+    if (wrapper) {
+      wrapper.classList.toggle('near-limit', len >= MAX * 0.85 && len < MAX);
+      wrapper.classList.toggle('at-limit',   len >= MAX);
+    }
+  });
+}());
+
+/* ═══════════════════════════════════════════════════════════
+   ENERGY CALCULATOR
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var slider   = document.getElementById('ceSlider');
+  var membersEl = document.getElementById('ceMembers');
+  var savingEl  = document.getElementById('ceSaving');
+  if (!slider || !membersEl || !savingEl) return;
+
+  var PER_MEMBER = 180; /* € per any */
+
+  function update() {
+    var n = parseInt(slider.value, 10);
+    membersEl.textContent = n;
+    savingEl.textContent  = (n * PER_MEMBER).toLocaleString('ca-ES') + '€';
+  }
+
+  slider.addEventListener('input', update);
+  update();
+}());
