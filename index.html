@@ -36,12 +36,16 @@
         <span class="nav__name">Algemesí <strong>2027</strong></span>
       </div>
       <ul class="nav__links" id="navLinks">
-        <li><a href="#hemeroteca" data-section="hemeroteca">Què han fet</a></li>
-        <li><a href="#pla" data-section="pla">Què farem</a></li>
-        <li><a href="#pla-ce" data-section="pla-ce">Energia</a></li>
-        <li><a href="#pla-placa" data-section="pla-placa">Plaça Major</a></li>
-        <li><a href="#denuncia" class="nav__cta" data-section="denuncia">Participa</a></li>
+        <li><a href="#hemeroteca" data-section="hemeroteca" data-i18n="nav_hemeroteca">Què han fet</a></li>
+        <li><a href="#pla" data-section="pla" data-i18n="nav_pla">Què farem</a></li>
+        <li><a href="#pla-ce" data-section="pla-ce" data-i18n="nav_ce">Energia</a></li>
+        <li><a href="#pla-placa" data-section="pla-placa" data-i18n="nav_placa">Plaça Major</a></li>
+        <li><a href="#denuncia" class="nav__cta" data-section="denuncia" data-i18n="nav_cta">Participa</a></li>
       </ul>
+      <button class="nav__lang" id="langToggle" aria-label="Canviar idioma" title="Canviar idioma / Cambiar idioma">
+        <span class="nav__lang-flag">🇺🇦</span>
+        <span id="langLabel">VAL</span>
+      </button>
       <button class="nav__burger" id="navBurger" aria-label="Menú">
         <span></span><span></span><span></span>
       </button>
@@ -105,10 +109,10 @@
       </div>
 
       <div class="hero__ctas">
-        <a href="#hemeroteca" class="btn btn--pp btn--large" id="cta-hemeroteca">
+        <a href="#hemeroteca" class="btn btn--pp btn--large" id="cta-hemeroteca" data-i18n="hero_cta_primary">
           Descobreix els fets
         </a>
-        <a href="#pla" class="btn btn--outline-white btn--large" id="cta-pla">
+        <a href="#pla" class="btn btn--outline-white btn--large" id="cta-pla" data-i18n="hero_cta_sec">
           El nostre pla
         </a>
       </div>
@@ -322,19 +326,23 @@
         </p>
         <div class="clipping__evidence-mini">
           <figure class="evidence-thumb">
-            <img src="IMG/raval-dana-55.jpg" alt="Casa trencada al Raval" loading="lazy" />
+            <img src="IMG/raval-dana-55.jpg" alt="Casa trencada al Raval" loading="lazy"
+              data-lightbox data-caption="Raval · Casa trencada" />
             <figcaption>Casa trencada</figcaption>
           </figure>
           <figure class="evidence-thumb">
-            <img src="IMG/raval-dana-33.jpg" alt="Parc infantil destrossat" loading="lazy" />
+            <img src="IMG/raval-dana-33.jpg" alt="Parc infantil destrossat" loading="lazy"
+              data-lightbox data-caption="Raval · Parc infantil destrossat" />
             <figcaption>Parc infantil</figcaption>
           </figure>
           <figure class="evidence-thumb">
-            <img src="IMG/raval-dana-69.jpg" alt="Escombros i fem al carrer" loading="lazy" />
+            <img src="IMG/raval-dana-69.jpg" alt="Escombros i fem al carrer" loading="lazy"
+              data-lightbox data-caption="Raval · Escombros al carrer" />
             <figcaption>Escombros al carrer</figcaption>
           </figure>
           <figure class="evidence-thumb">
-            <img src="IMG/raval-dana-41.jpg" alt="Conill de parc infantil" loading="lazy" />
+            <img src="IMG/raval-dana-41.jpg" alt="Conill de parc infantil" loading="lazy"
+              data-lightbox data-caption="Raval · Zona infantil" />
             <figcaption>Parc infantil</figcaption>
           </figure>
         </div>
@@ -417,8 +425,8 @@
         </div>
         <div class="clipping__note clipping__note--pp">Per què no s'han convocat concursos que prioritzen empreses d'Algemesí?</div>
         <div class="clipping__source-url">
-          Font: <a href="https://www.ondacero.es/emisoras/comunidad-valenciana/" target="_blank" rel="noopener">Onda Cero</a>;
-          <a href="https://www.levante-emv.com/ribera/algemesi/" target="_blank" rel="noopener">Levante-EMV edició Alzira/Ribera</a>
+          Font: <a href="https://www.ondacero.es/emisoras/comunidad-valenciana/" target="_blank" rel="noopener">Onda Cero — Edició CV</a>;
+          <a href="https://www.levante-emv.com/ribera-canal/algemesi/" target="_blank" rel="noopener">Levante-EMV — Ribera i la Canal (Algemesí)</a>
         </div>
       </article>
 
@@ -453,8 +461,9 @@
           El polígon segueix sense la reforma. Les empreses locals, perjudicades.
         </div>
         <div class="clipping__source-url">
-          Font: Documents de gestió municipal;
-          <a href="https://www.gva.es/va/inicio/area_de_prensa" target="_blank" rel="noopener">Generalitat Valenciana — Subvencions</a>
+          Font: Actes del Ple Municipal d'Algemesí (2023-2024);
+          <a href="https://www.gva.es/va/inicio/atencion_ciudadano/ayudas_subvenciones" target="_blank" rel="noopener">GVA — Subvencions Polígons Industrials</a>;
+          PSPV-PSOE Algemesí — Informe de gestió
         </div>
       </article>
 
@@ -514,19 +523,23 @@
         </p>
         <div class="clipping__evidence-mini">
           <figure class="evidence-thumb">
-            <img src="IMG/basura-plaza-ribera-02.jpeg" alt="Brutícia a la Plaça de la Ribera" loading="lazy" />
+            <img src="IMG/basura-plaza-ribera-02.jpeg" alt="Brutícia a la Plaça de la Ribera" loading="lazy"
+              data-lightbox data-caption="Plaça de la Ribera · Brutícia acumulada" />
             <figcaption>Plaça Ribera</figcaption>
           </figure>
           <figure class="evidence-thumb">
-            <img src="IMG/basura-plaza-ribera-berca-periodico.jpeg" alt="Retall premsa Berca" loading="lazy" />
+            <img src="IMG/basura-plaza-ribera-berca-periodico.jpeg" alt="Retall premsa Berca" loading="lazy"
+              data-lightbox data-caption="Periòdic Berca · Reportatge abandó urbà" />
             <figcaption>Premsa local</figcaption>
           </figure>
           <figure class="evidence-thumb">
-            <img src="IMG/basura-calles-07.jpeg" alt="Carrer brut" loading="lazy" />
+            <img src="IMG/basura-calles-07.jpeg" alt="Carrer brut" loading="lazy"
+              data-lightbox data-caption="Carrer cèntric · Fem acumulat" />
             <figcaption>Carrer cèntric</figcaption>
           </figure>
           <figure class="evidence-thumb">
-            <img src="IMG/basura-calles-05.jpeg" alt="Fem acumulat" loading="lazy" />
+            <img src="IMG/basura-calles-05.jpeg" alt="Fem acumulat" loading="lazy"
+              data-lightbox data-caption="Via pública · Abandó urbà" />
             <figcaption>Via pública</figcaption>
           </figure>
         </div>
@@ -538,9 +551,10 @@
           Si la premsa ho publica i l'Ajuntament no respon, qui vetla pels veïns?
         </div>
         <div class="clipping__source-url">
-          Font: Denúncies veïnals;
-          <a href="https://bfranciscoberca.wordpress.com/" target="_blank" rel="noopener">Periòdic Berca</a>;
-          Fotografies aportades per ciutadans
+          Font: Denúncies veïnals documentades;
+          <a href="https://bfranciscoberca.wordpress.com/" target="_blank" rel="noopener">Periòdic Berca — Algemesí</a>;
+          <a href="https://www.levante-emv.com/ribera-canal/algemesi/" target="_blank" rel="noopener">Levante-EMV — Algemesí</a>;
+          Fotografies aportades per veïns
         </div>
       </article>
 
@@ -904,6 +918,7 @@
       </div>
 
       <!-- PILAR 2 -->
+      <div class="pilar pilar--pp" id="pilar-transparencia">
         <div class="pilar__header-bar">
           <span class="pilar__num">2</span>
           <span class="pilar__icon" aria-hidden="true">🔍</span>
@@ -934,6 +949,7 @@
       </div>
 
       <!-- PILAR 3 -->
+      <div class="pilar pilar--pp" id="pilar-industrial">
         <div class="pilar__header-bar">
           <span class="pilar__num">3</span>
           <span class="pilar__icon" aria-hidden="true">🏭</span>
@@ -964,6 +980,7 @@
       </div>
 
       <!-- PILAR 4 -->
+      <div class="pilar pilar--culture" id="pilar-cultura">
         <div class="pilar__header-bar">
           <span class="pilar__num">4</span>
           <span class="pilar__icon" aria-hidden="true">🎭</span>
@@ -1267,19 +1284,19 @@
           </div>
 
           <div class="form-group">
-            <label for="nom" class="form-label">Nom o empresa (opcional)</label>
+            <label for="nom" class="form-label" data-i18n="form_nom_label">Nom o empresa (opcional)</label>
             <input type="text" id="nom" name="nom" class="form-input"
               placeholder="El teu nom, empresa o romaneu anònim/a" autocomplete="name" />
           </div>
 
           <div class="form-group">
-            <label for="email" class="form-label">Correu electrònic (opcional)</label>
+            <label for="email" class="form-label" data-i18n="form_email_label">Correu electrònic (opcional)</label>
             <input type="email" id="email" name="email" class="form-input"
               placeholder="perquè et puguem donar resposta" autocomplete="email" />
           </div>
 
           <div class="form-group">
-            <label for="tipus" class="form-label">Tipus de cas <span class="form-required">*</span></label>
+            <label for="tipus" class="form-label" data-i18n="form_tipus_label">Tipus de cas <span class="form-required">*</span></label>
             <select id="tipus" name="tipus" class="form-input form-select" required>
               <option value="">— Selecciona el tipus de cas —</option>
               <option value="obra">Obra adjudicada a empresa de fora</option>
@@ -1301,7 +1318,7 @@
           </div>
 
           <div class="form-group">
-            <label for="descripcio" class="form-label">Descriu el cas <span class="form-required">*</span></label>
+            <label for="descripcio" class="form-label" data-i18n="form_desc_label">Descriu el cas <span class="form-required">*</span></label>
             <textarea id="descripcio" name="descripcio" class="form-input form-textarea" rows="4"
               placeholder="Explica'ns el que ha passat amb el màxim de detall possible: dates, import, empreses implicades, testimonis..."
               required maxlength="1200"></textarea>
@@ -1310,7 +1327,7 @@
           </div>
 
           <div class="form-group">
-            <label for="foto" class="form-label">Puja la teua foto o document (opcional)</label>
+            <label for="foto" class="form-label" data-i18n="form_attach_label">Puja la teua foto o document (opcional)</label>
             <div class="form-upload" id="uploadZone">
               <input type="file" id="foto" name="foto" class="form-upload__input" accept="image/*,.pdf,.doc,.docx" />
               <div class="form-upload__label" id="uploadLabel">

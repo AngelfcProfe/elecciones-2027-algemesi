@@ -245,8 +245,6 @@ function initCarousel(trackId, dotsId, prevId, nextId) {
   if (carouselEl) carouselObserver.observe(carouselEl);
 }
 
-}
-
 initCarousel('danaCarouselTrack', 'danaCarouselDots', 'danaCarouselPrev', 'danaCarouselNext');
 initCarousel('ravalCarouselTrack', 'ravalCarouselDots', 'ravalCarouselPrev', 'ravalCarouselNext');
 
@@ -386,4 +384,187 @@ document.addEventListener('click', function (e) {
 
   slider.addEventListener('input', update);
   update();
+}());
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var overlay = null;
+
+  function openLightbox(src, caption) {
+    if (overlay) return;
+    overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', caption || 'Imatge ampliada');
+
+    var closeBtn = document.createElement('button');
+    closeBtn.className = 'lightbox-overlay__close';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.setAttribute('aria-label', 'Tancar');
+
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = caption || '';
+
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(img);
+
+    if (caption) {
+      var cap = document.createElement('div');
+      cap.className = 'lightbox-overlay__caption';
+      cap.textContent = caption;
+      overlay.appendChild(cap);
+    }
+
+    function close() {
+      if (overlay) {
+        overlay.remove();
+        overlay = null;
+        document.removeEventListener('keydown', onKey);
+      }
+    }
+
+    function onKey(e) {
+      if (e.key === 'Escape') close();
+    }
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay || e.target === closeBtn) close();
+    });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+
+    document.body.appendChild(overlay);
+    closeBtn.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest('img[data-lightbox]');
+    if (!img) return;
+    e.preventDefault();
+    openLightbox(img.src, img.dataset.caption || img.alt);
+  });
+}());
+
+/* ═══════════════════════════════════════════════════════════
+   LANGUAGE SWITCHER (VA / ES)
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var I18N = {
+    ca: {
+      nav_hemeroteca: 'Què han fet',
+      nav_pla:        'Què farem',
+      nav_ce:         'Energia',
+      nav_placa:      'Plaça Major',
+      nav_cta:        'Participa',
+      form_nom_label:   'Nom o empresa (opcional)',
+      form_email_label: 'Correu electrònic (opcional)',
+      form_tipus_label: 'Tipus de cas',
+      form_desc_label:  'Descriu el cas',
+      form_attach_label:'Adjunta una foto o document (opcional)',
+      form_submit:      'Enviar la denúncia',
+      hero_cta_primary: "Descobreix tots els casos",
+      hero_cta_sec:     "El nostre pla",
+      pla_label:        '📋 EL NOSTRE PLA',
+      pla_title:        'Algemesí mereix solucions reals',
+      cta_bar:          'Participa i construeix el canvi',
+      futur_cta_text:   'Vols el programa complet? El posem a la teua disposició, sense lletra menuda.',
+      footer_credit:    'Grup Municipal PSOE · Algemesí 2027'
+    },
+    es: {
+      nav_hemeroteca: '¿Qué han hecho?',
+      nav_pla:        '¿Qué haremos?',
+      nav_ce:         'Energía',
+      nav_placa:      'Plaza Mayor',
+      nav_cta:        'Participa',
+      form_nom_label:   'Nombre o empresa (opcional)',
+      form_email_label: 'Correo electrónico (opcional)',
+      form_tipus_label: 'Tipo de caso',
+      form_desc_label:  'Describe el caso',
+      form_attach_label:'Adjunta una foto o documento (opcional)',
+      form_submit:      'Enviar la denuncia',
+      hero_cta_primary: "Descubre todos los casos",
+      hero_cta_sec:     "Nuestro plan",
+      pla_label:        '📋 NUESTRO PLAN',
+      pla_title:        'Algemesí merece soluciones reales',
+      cta_bar:          'Participa y construye el cambio',
+      futur_cta_text:   '¿Quieres el programa completo? Lo ponemos a tu disposición, sin letra pequeña.',
+      footer_credit:    'Grupo Municipal PSOE · Algemesí 2027'
+    }
+  };
+
+  /* Extra selectors for non-data-i18n elements (form submit button, section labels) */
+  var SELECTORS = {
+    form_submit:    'button[type="submit"]',
+    pla_label:      '.section-header__label--red',
+    pla_title:      '.section-header__title',
+    cta_bar:        '.btn--red.btn--large',
+    futur_cta_text: '.futur__cta-text',
+    footer_credit:  '.footer__credit'
+  };
+
+  var btn      = document.getElementById('langToggle');
+  var flagEl   = btn && btn.querySelector('.nav__lang-flag');
+  var labelEl  = document.getElementById('langLabel');
+  var htmlEl   = document.documentElement;
+
+  function detectLang() {
+    var saved = localStorage.getItem('lang');
+    if (saved === 'ca' || saved === 'es') return saved;
+    var nav = (navigator.language || '').toLowerCase();
+    /* Default to Valencian; only switch to Spanish if clearly Spanish and not Catalan/Valencian */
+    if (nav.startsWith('es') && !nav.includes('ca') && !nav.includes('val')) return 'es';
+    return 'ca';
+  }
+
+  function applyLang(lang) {
+    var t = I18N[lang];
+    if (!t) return;
+
+    /* data-i18n elements */
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.dataset.i18n;
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+
+    /* Extra selectors — only update textContent of first matching element */
+    Object.keys(SELECTORS).forEach(function (key) {
+      if (t[key] === undefined) return;
+      var el = document.querySelector(SELECTORS[key]);
+      if (!el) return;
+      /* For label elements keep the required asterisk span */
+      var reqSpan = el.querySelector('.form-required');
+      if (reqSpan) {
+        el.childNodes[0].textContent = t[key] + ' ';
+      } else {
+        el.textContent = t[key];
+      }
+    });
+
+    /* Update html lang attribute and button indicator */
+    if (lang === 'ca') {
+      htmlEl.setAttribute('lang', 'ca-ES-valencia');
+      if (flagEl) flagEl.textContent = '🇻🇦';
+      if (labelEl) labelEl.textContent = 'VAL';
+    } else {
+      htmlEl.setAttribute('lang', 'es');
+      if (flagEl) flagEl.textContent = '🇪🇸';
+      if (labelEl) labelEl.textContent = 'CAS';
+    }
+
+    localStorage.setItem('lang', lang);
+  }
+
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var current = localStorage.getItem('lang') || detectLang();
+      applyLang(current === 'ca' ? 'es' : 'ca');
+    });
+  }
+
+  /* Apply on page load */
+  applyLang(detectLang());
 }());
