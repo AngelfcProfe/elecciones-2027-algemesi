@@ -568,3 +568,92 @@ document.addEventListener('click', function (e) {
   /* Apply on page load */
   applyLang(detectLang());
 }());
+
+/* ============================================================
+   COOKIE BANNER
+   ============================================================ */
+(function () {
+  'use strict';
+  var banner = document.getElementById('cookieBanner');
+  var acceptBtn = document.getElementById('cookieAccept');
+  if (!banner) return;
+
+  function hideBanner() {
+    banner.classList.add('cookie-banner--hidden');
+    try { localStorage.setItem('cookieConsent', '1'); } catch (e) {}
+  }
+
+  /* Show only if not yet accepted */
+  if (localStorage.getItem('cookieConsent') === '1') {
+    banner.classList.add('cookie-banner--hidden');
+  }
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', hideBanner);
+  }
+}());
+
+/* ============================================================
+   PRIVACY / LEGAL MODAL
+   ============================================================ */
+(function () {
+  'use strict';
+  var modal = document.getElementById('privacyModal');
+  var closeBtn = document.getElementById('closePrivacy');
+  if (!modal) return;
+
+  function openModal() {
+    modal.showModal();
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    modal.close();
+    document.body.classList.remove('modal-open');
+  }
+
+  /* Open triggers: form link, footer links, cookie banner link */
+  ['openPrivacyForm', 'openPrivacyFooter1', 'openPrivacyFooter2', 'openPrivacyCookie'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  /* Close button */
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  /* Click outside (backdrop) closes modal */
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  /* Escape key is handled natively by <dialog>, but also remove class */
+  modal.addEventListener('close', function () {
+    document.body.classList.remove('modal-open');
+  });
+
+  /* Tab switching */
+  var tabs = modal.querySelectorAll('.privacy-modal__tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.classList.remove('privacy-modal__tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('privacy-modal__tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      var targetPanel = tab.dataset.tab === 'legal' ? 'panelLegal' : 'panelPrivacy';
+      var hidePanel   = tab.dataset.tab === 'legal' ? 'panelPrivacy' : 'panelLegal';
+      var showEl = document.getElementById(targetPanel);
+      var hideEl = document.getElementById(hidePanel);
+      if (showEl) showEl.classList.remove('privacy-modal__panel--hidden');
+      if (hideEl) hideEl.classList.add('privacy-modal__panel--hidden');
+    });
+  });
+}());

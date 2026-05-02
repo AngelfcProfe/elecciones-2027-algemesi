@@ -353,7 +353,11 @@
         <div class="clipping__note clipping__note--pp">
           Governar és estar al carrer amb els veïns. El PP no hi era.
         </div>
-        <div class="clipping__source-url">Font: Testimonis veïnals del Raval; Comunicat PSPV-PSOE Algemesí</div>
+        <div class="clipping__source-url">
+          Font: <a href="https://www.elperiodic.com/algemesi/pspv-algemesi-denuncia-acumulacion-material-donado-tras-dana-poligono-cotes_1044657" target="_blank" rel="noopener">elperiodic.com — PSPV denuncia material DANA acumulat i Raval sense netejar (10/11/2025)</a>;
+          <a href="https://www.elperiodic.com/algemesi/ayuntamiento-algemesi-tardo-nueve-meses-crear-bolsas-trabajo-para-acelerar-reconstruccion-post-dana_1050367" target="_blank" rel="noopener">elperiodic.com — 9 mesos de retard i 0€ d'ajudes a comerços afectats (11/12/2025)</a>;
+          Testimonis veïnals directes recollits per la portaveu Marta Trenzano
+        </div>
       </article>
 
       <!-- Carrusel Raval — directament sota CAS 2 -->
@@ -439,9 +443,10 @@
         </div>
         <div class="clipping__note clipping__note--pp">Per què no s'han convocat concursos que prioritzen empreses d'Algemesí?</div>
         <div class="clipping__source-url">
-          Font: Onda Cero — Edició Comunitat Valenciana;
-          Levante-EMV — Ribera i la Canal (Algemesí)
-          <em style="display:block;margin-top:.3rem;font-size:.7rem;opacity:.7">(Articles no disponibles en arxiu obert. Contingut contrastat per la redacció.)</em>
+          Font: <a href="https://contrataciondelestado.es/wps/portal/plataforma" target="_blank" rel="noopener">Plataforma Nacional de Contractació del Sector Públic</a> (cerca expedients: Algemesí — Pavelló 9 d'Octubre / Plaça del Mercat);
+          <a href="https://www.algemesi.es/va/page/transparencia" target="_blank" rel="noopener">Portal de Transparència Ajuntament d'Algemesí</a> — actes d'adjudicació i plecs de condicions;
+          <a href="https://www.algemesi.es/va/page/actes-del-ple" target="_blank" rel="noopener">Actes del Ple Municipal d'Algemesí (2024-2025)</a>
+          <em style="display:block;margin-top:.3rem;font-size:.7rem;opacity:.7">(Els expedients d'adjudicació consten en l'arxiu públic de la Plataforma Nacional de Contractació. No existeix article de premsa en arxiu obert per a aquest cas específic.)</em>
         </div>
       </article>
 
@@ -637,6 +642,7 @@
         <div class="clipping__note clipping__note--vox">La nostra identitat no és una línia de partida on estalviar.</div>
         <div class="clipping__source-url">
           Font: <a href="https://www.algemesi.es/va/page/pressupostos-municipals" target="_blank" rel="noopener">Pressupostos municipals d'Algemesí 2024-2025</a>;
+          <a href="https://www.algemesi.es/va/page/transparencia" target="_blank" rel="noopener">Portal de Transparència Ajuntament d'Algemesí</a> — dades de despesa per partides culturals;
           <a href="https://ich.unesco.org/en/RL/la-muixeranga-de-algemesi-01444" target="_blank" rel="noopener">UNESCO ICH — La Muixeranga d'Algemesí (expedient 01444)</a>
         </div>
       </article>
@@ -880,6 +886,7 @@
         <div class="clipping__note clipping__note--vox">Les retallades de VOX les paguen les famílies que menys tenen.</div>
         <div class="clipping__source-url">
           Font: <a href="https://www.algemesi.es/va/page/pressupostos-municipals" target="_blank" rel="noopener">Pressupostos municipals d'Algemesí 2024-2025</a>;
+          <a href="https://www.algemesi.es/va/page/transparencia" target="_blank" rel="noopener">Portal de Transparència Ajuntament d'Algemesí</a> — dades de despesa en serveis socials i igualtat;
           <a href="https://www.gva.es/va/inicio/area_de_prensa/ap_not_detalle_area_prensa?id=1000988" target="_blank" rel="noopener">GVA — Serveis Socials municipals (nota de premsa)</a>
         </div>
       </article>
@@ -1543,7 +1550,7 @@
             <input type="checkbox" id="rgpd" name="rgpd" class="form-check" required />
             <label for="rgpd" class="form-check-label">
               Accepte que les meues dades s'utilitzen exclusivament per a la defensa dels drets
-              dels veïns i veïnes d'Algemesí. <a href="#" class="form-link">Política de privacitat</a>.
+              dels veïns i veïnes d'Algemesí. <a href="#privacyModal" class="form-link" id="openPrivacyForm">Política de privacitat</a>.
             </label>
             <span class="form-error" id="rgpd-error">Has d'acceptar la política de privacitat per continuar.</span>
           </div>
@@ -1583,11 +1590,104 @@
       <div class="footer__legal">
         <p>© 2027 PSOE Algemesí · Tots els drets reservats.</p>
         <p><strong>Totes les dades citades en aquesta pàgina provenen de fonts documentades i públiques.</strong></p>
+        <div class="footer__links-legal">
+          <a href="#privacyModal" class="footer__legal-link" id="openPrivacyFooter1">Política de Privacitat</a>
+          <span class="footer__legal-sep" aria-hidden="true">·</span>
+          <a href="#privacyModal" class="footer__legal-link" id="openPrivacyFooter2">Avís Legal</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Tornar a l'inici">↑</a>
+
+  <!-- ============================================================
+       COOKIE BANNER (LSSI / RGPD - Google Fonts CDN notice)
+  ============================================================ -->
+  <div id="cookieBanner" class="cookie-banner" role="complementary" aria-label="Avís de privacitat">
+    <p class="cookie-banner__text">
+      Aquesta web <strong>no utilitza cookies pròpies</strong> ni publicitat.
+      Fem servir <strong>Google Fonts</strong> (tipografia) que pot transferir dades tècniques (adreça IP) als servidors de Google LLC (EUA), emparat per les Clàusules Contractuals Estàndard de la CE.
+      <a href="#privacyModal" class="cookie-banner__link" id="openPrivacyCookie">Més informació</a>
+    </p>
+    <button class="cookie-banner__btn" id="cookieAccept" type="button">D'acord</button>
+  </div>
+
+  <!-- ============================================================
+       PRIVACY MODAL (RGPD Art.13 + Avís Legal LSSI Art.10)
+  ============================================================ -->
+  <dialog id="privacyModal" class="privacy-modal" aria-labelledby="privacyModalTitle">
+    <div class="privacy-modal__inner">
+      <button class="privacy-modal__close" id="closePrivacy" type="button" aria-label="Tancar">&times;</button>
+
+      <h2 class="privacy-modal__title" id="privacyModalTitle">Política de Privacitat i Avís Legal</h2>
+
+      <div class="privacy-modal__tabs" role="tablist">
+        <button class="privacy-modal__tab privacy-modal__tab--active" role="tab" aria-selected="true" data-tab="privacy">Política de Privacitat</button>
+        <button class="privacy-modal__tab" role="tab" aria-selected="false" data-tab="legal">Avís Legal</button>
+      </div>
+
+      <!-- ─── Tab: Política de Privacitat ─────────────────── -->
+      <div class="privacy-modal__panel" id="panelPrivacy" role="tabpanel">
+        <p class="privacy-modal__updated">Darrera actualització: 2 de maig de 2026</p>
+
+        <h3>1. Responsable del tractament</h3>
+        <p><strong>PSPV-PSOE Grup Municipal d'Algemesí</strong><br />
+        Adreça de contacte: Ajuntament d'Algemesí, Pl. Major, 3 — 46680 Algemesí (València)<br />
+        Correu electrònic: <a href="mailto:psoe.algemesi@gmail.com" class="privacy-modal__link">psoe.algemesi@gmail.com</a></p>
+
+        <h3>2. Finalitat del tractament</h3>
+        <p>Les dades personals que facilites a través del formulari de dendúncia s'utilitzen exclusivament per a:
+        <ul>
+          <li>Recepcionar i gestionar casos i proves sobre la gestió municipal</li>
+          <li>Exercir el control institucional i defendre els drets dels veïns i veïnes d'Algemesí</li>
+          <li>Contactar-te, si has facilitat un email, per acusar rebuda o sol·licitar aclariments</li>
+        </ul></p>
+
+        <h3>3. Base jurídica</h3>
+        <p>El tractament està basat en el teu <strong>consentiment explícit</strong> (Art. 6.1.a del RGPD / Reglament UE 2016/679), que pots revocar en qualsevol moment.</p>
+
+        <h3>4. Destinataris</h3>
+        <p>Les teves dades <strong>no se cediran a tercers</strong>. Únicûs membres del grup municipal PSOE d'Algemesí tindran accés als casos rebuts.</p>
+
+        <h3>5. Conservació de les dades</h3>
+        <p>Les dades es conservaran fins a les eleccions municipals de 2027 o, si és anterior, fins que sol·licites la seua supressió.</p>
+
+        <h3>6. Els teus drets</h3>
+        <p>Tens dret a: <strong>accés, rectificació, supressió, portabilitat, limitació del tractament i oposició</strong>.<br />
+        Per exercir-los, escriu a <a href="mailto:psoe.algemesi@gmail.com" class="privacy-modal__link">psoe.algemesi@gmail.com</a>.<br />
+        També pots presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (<a href="https://www.aepd.es" target="_blank" rel="noopener" class="privacy-modal__link">aepd.es</a>).</p>
+
+        <h3>7. Transferències internacionals</h3>
+        <p>Aquesta web utilitza <strong>Google Fonts</strong> per carregar les tipografies. Aquesta connexió pot implicar la transferència tècnica de la teua adreça IP als servidors de <strong>Google LLC</strong> als Estats Units. Aquesta transferència està emparada per les Clàusules Contractuals Estàndard aprovades per la Comissió Europea (Dec. d'exec. UE 2021/914).<br />
+        La web <strong>no utilitza galetes pròpies, analytics ni publicitat</strong>.</p>
+      </div>
+
+      <!-- ─── Tab: Avís Legal ─────────────────────────────── -->
+      <div class="privacy-modal__panel privacy-modal__panel--hidden" id="panelLegal" role="tabpanel">
+        <p class="privacy-modal__updated">Art. 10 Llei 34/2002 (LSSI-CE)</p>
+
+        <h3>1. Titular del lloc web</h3>
+        <p><strong>PSPV-PSOE Grup Municipal d'Algemesí</strong><br />
+        NIF: <em>(per confirmar per la secretaria del grup local)</em><br />
+        Adreça: Pl. Major, 3 — 46680 Algemesí (València)<br />
+        Correu: <a href="mailto:psoe.algemesi@gmail.com" class="privacy-modal__link">psoe.algemesi@gmail.com</a></p>
+
+        <h3>2. Objecte del lloc web</h3>
+        <p>Aquest lloc web té finalitat exclusivament política i informativa. Conté anàlisi, dades públiques i denddúncies verificades sobre la gestió municipal d'Algemesí (2023-2027).</p>
+
+        <h3>3. Propietat intel·lectual</h3>
+        <p>Els continguts d'aquesta web són de titularitat del PSPV-PSOE Grup Municipal d'Algemesí. Tota reproducció per a fins no comercials està permesa amb cita expressa de la font.</p>
+
+        <h3>4. Galetes (LSSI)</h3>
+        <p>Aquest lloc web <strong>no instal·la galetes pròpies</strong> al teu dispositiu. L'única transferència externa de dades tècniques prové de Google Fonts (tipografia); vegeu la Política de Privacitat per a més detalls.</p>
+
+        <h3>5. Responsabilitat</h3>
+        <p>Les dades i informacions d'aquest lloc web provenen de fonts documentades i públiques (Actes del Ple, portals de transparència, premsa verificada). El grup municipal es responsabilitza de la veracitat del contingut publicat.</p>
+      </div>
+
+    </div>
+  </dialog>
 
   <script src="main.js"></script>
 </body>
