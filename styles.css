@@ -2611,6 +2611,104 @@ img[data-lightbox]:hover { opacity: 0.88; }
 .nav__lang .nav__lang-flag { font-size: 0.9rem; }
 
 /* ═══════════════════════════════════════════════════════════
+   DATA VISUAL BLOCKS — bar charts, comparison lists
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Generic container ─────────────────────────────────── */
+.clipping__data-visual {
+  margin: 1rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.clipping__data-visual-title {
+  font-family: var(--ff-typewriter);
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  border-bottom: 1px solid var(--c-line);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ── Comparison bar chart rows ─────────────────────────── */
+.data-bar {
+  display: grid;
+  grid-template-columns: 120px 1fr 60px;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+.data-bar__label {
+  color: var(--c-ink);
+  font-weight: 600;
+  font-size: 0.74rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.data-bar__track {
+  background: var(--c-line);
+  border-radius: 2px;
+  height: 10px;
+  overflow: hidden;
+}
+.data-bar__fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+.data-bar__fill--bad  { background: var(--c-red); }
+.data-bar__fill--vox  { background: var(--c-vox); }
+.data-bar__fill--good { background: #1e7a32; }
+.data-bar__fill--zero { background: rgba(0,0,0,0.12); width: 2px !important; }
+.data-bar__value {
+  font-family: var(--ff-typewriter);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+.data-bar__value--bad  { color: var(--c-red); }
+.data-bar__value--vox  { color: var(--c-vox-dark); }
+.data-bar__value--good { color: #1e7a32; }
+.data-bar__value--zero { color: var(--c-muted); }
+
+/* ── Concessions / checklist ───────────────────────────── */
+.clipping__checklist {
+  margin: 1rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--c-ink);
+  line-height: 1.45;
+}
+.check-item__icon {
+  flex-shrink: 0;
+  font-weight: 900;
+  font-size: 0.85rem;
+  margin-top: 1px;
+  min-width: 1.1rem;
+}
+.check-item--bad  .check-item__icon { color: var(--c-red); }
+.check-item--vox  .check-item__icon { color: var(--c-vox-dark); }
+.check-item--warn .check-item__icon { color: #b35c00; }
+.check-item--good .check-item__icon { color: #1e7a32; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .data-bar { grid-template-columns: 90px 1fr 50px; }
+  .data-bar__label { font-size: 0.68rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    MOBILE IMPROVEMENTS
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
