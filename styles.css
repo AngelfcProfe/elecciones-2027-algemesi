@@ -1574,6 +1574,7 @@ ul { list-style: none; }
 }
 .clipping__evidence-mini .evidence-thumb {
   aspect-ratio: 1;
+  min-height: 0; /* override base rule — let aspect-ratio control sizing */
 }
 .clipping__evidence-mini .evidence-thumb img {
   width: 100%;
